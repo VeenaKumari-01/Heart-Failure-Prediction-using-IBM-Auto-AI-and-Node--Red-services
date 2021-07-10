@@ -1,0 +1,612 @@
+[
+    {
+        "id": "ce6271ca.97f74",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "848f7258.34b06",
+        "type": "ui_form",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "label": "",
+        "group": "e2a9c012.5a705",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "AvgHeartBeatPerMin",
+                "value": "a",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "PalpitationsPerDay",
+                "value": "p",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Cholesterol",
+                "value": "c",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "BMI",
+                "value": "b",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Age",
+                "value": "a1",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "ExerciseMinsPerWeek",
+                "value": "e",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "a": "",
+            "p": "",
+            "c": "",
+            "b": "",
+            "a1": "",
+            "e": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": true,
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "43a3c828.ac8918"
+            ]
+        ]
+    },
+    {
+        "id": "43a3c828.ac8918",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "Global Variables",
+        "func": "global.set(\"avgheartratepermin\",msg.payload.a)\nglobal.set(\"palpitationperday\",msg.payload.p)\nglobal.set(\"cholestrol\",msg.payload.c)\nglobal.set(\"bmi\",msg.payload.b)\nglobal.set(\"age\",msg.payload.a1)\nglobal.set(\"exerciseperweek\",msg.payload.e)\nvar apikey=\"TAOngRQepl84-JegfNDKX96z69IAM1tF3dIdJbM5cZcJ\"\nmsg.headers={\"content-type\":\"application/x-www-form-urlencoded\"}\nmsg.payload={\"grant_type\":\"urn:ibm:params:oauth:grant-type:apikey\",\"apikey\":apikey}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 100,
+        "wires": [
+            [
+                "574b298c.f435e8",
+                "9422414f.bf43f"
+            ]
+        ]
+    },
+    {
+        "id": "cd13c533.a14748",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "SEX",
+        "func": "global.set(\"sex\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "b730bf04.8fb97"
+            ]
+        ]
+    },
+    {
+        "id": "e11516df.69a428",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "FamilyHistory",
+        "func": "global.set(\"familyhistory\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "7b1a7710.be1a48"
+            ]
+        ]
+    },
+    {
+        "id": "de0f63e4.353d",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "Smoker",
+        "func": "global.set(\"smoker\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "62ada9d5.867828"
+            ]
+        ]
+    },
+    {
+        "id": "b730bf04.8fb97",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7b1a7710.be1a48",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "62ada9d5.867828",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "574b298c.f435e8",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a187a18c.71531",
+        "type": "ui_dropdown",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "label": "Sex",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "e2a9c012.5a705",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "F",
+                "value": "F",
+                "type": "str"
+            },
+            {
+                "label": "M",
+                "value": "M",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 50,
+        "y": 180,
+        "wires": [
+            [
+                "cd13c533.a14748"
+            ]
+        ]
+    },
+    {
+        "id": "3da13d05.9b5d92",
+        "type": "ui_dropdown",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "label": "FamilyHistory",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "e2a9c012.5a705",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Y",
+                "value": "Y",
+                "type": "str"
+            },
+            {
+                "label": "N",
+                "value": "N",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "e11516df.69a428"
+            ]
+        ]
+    },
+    {
+        "id": "88916957.6d61e8",
+        "type": "ui_dropdown",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "label": "Are you Smoker",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "e2a9c012.5a705",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Y",
+                "value": "Y",
+                "type": "str"
+            },
+            {
+                "label": "N",
+                "value": "N",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 80,
+        "y": 360,
+        "wires": [
+            [
+                "de0f63e4.353d"
+            ]
+        ]
+    },
+    {
+        "id": "9422414f.bf43f",
+        "type": "http request",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://iam.cloud.ibm.com/identity/token",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 450,
+        "y": 60,
+        "wires": [
+            [
+                "f5ce6e7c.4e997",
+                "f99cf7f8.0db608"
+            ]
+        ]
+    },
+    {
+        "id": "f5ce6e7c.4e997",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f99cf7f8.0db608",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "func": "var age=global.get(\"age\")\nvar avgheartratepermin=global.get(\"avgheartratepermin\")\nvar palpitationperday=global.get(\"palpitationperday\")\nvar cholestrol=global.get(\"cholestrol\")\nvar bmi=global.get(\"bmi\")\nvar exerciseperweek=global.get(\"exerciseperweek\")\nvar sex=global.get(\"sex\")\nvar familyhistory=global.get(\"familyhistory\")\nvar somker=global.set(\"smoker\")\nvar token=msg.payload.access_token\nmsg.headers={'Content-Type':'application/json',\"Authorization\":\"Bearer\"+token,\"Accept\":\"application/json\"}\nmsg.payload={\n\t\"input_data\": [\n\t\t{\n\t\t\t\"fields\": [\n\t\t\t\t\"AVGHEARTBEATSPERMIN\",\n\t\t\t\t\"PALPITATIONSPERDAY\",\n\t\t\t\t\"CHOLESTEROL\",\n\t\t\t\t\"BMI\",\n\t\t\t\t\"AGE\",\n\t\t\t\t\"SEX\",\n\t\t\t\t\"FAMILYHISTORY\",\n\t\t\t\t\"SMOKERLAST5YRS\",\n\t\t\t\t\"EXERCISEMINPERWEEK\"\n\t\t\t],\n\t\t\t\"values\": [\n\t\t\t\t[\n\t\t\t\t\tavgheartratepermin,\n\t\t\t\t    palpitationperday,\n\t\t\t\t    cholestrol,\n\t\t\t\t    bmi,\n\t\t\t\t    age,\n\t\t\t\t    sex,\n\t\t\t\t    familyhistory,\n\t\t\t\t    somker,\n\t\t\t\t    exerciseperweek\n\t\t\t\t]\n\t\t\t]}]}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 20,
+        "wires": [
+            [
+                "f0968102.0df59"
+            ]
+        ]
+    },
+    {
+        "id": "f0968102.0df59",
+        "type": "http request",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/73d5ad42-1e60-456f-894c-18bc4001aa5c/predictions?version=2021-07-09",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 810,
+        "y": 20,
+        "wires": [
+            [
+                "c037df5.8ce412",
+                "b3ca5804.a8dbd8",
+                "495a49d.8ec88b8",
+                "d1f10d36.06672"
+            ]
+        ]
+    },
+    {
+        "id": "c037df5.8ce412",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b3ca5804.a8dbd8",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "heartrisk",
+        "func": "msg.payload=msg.payload.predictions[0].values[0][0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 40,
+        "wires": [
+            [
+                "73011cce.f55874",
+                "fc5d4163.fb33b"
+            ]
+        ]
+    },
+    {
+        "id": "73011cce.f55874",
+        "type": "ui_text",
+        "z": "ce6271ca.97f74",
+        "group": "e2a9c012.5a705",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Heart risk",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1240,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "fc5d4163.fb33b",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3e17db7.449bb24",
+        "type": "ui_text",
+        "z": "ce6271ca.97f74",
+        "group": "e2a9c012.5a705",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Prediction(%)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1320,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2b46a2be.c0675e",
+        "type": "ui_text",
+        "z": "ce6271ca.97f74",
+        "group": "e2a9c012.5a705",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Probability(%)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1320,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "acf46b25.ed9888",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c8f7c299.56ea2",
+        "type": "debug",
+        "z": "ce6271ca.97f74",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "495a49d.8ec88b8",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "PREDICTION",
+        "func": "msg.payload=msg.payload.predictions[0].values[0][1][0]*100\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 80,
+        "wires": [
+            [
+                "3e17db7.449bb24",
+                "acf46b25.ed9888"
+            ]
+        ]
+    },
+    {
+        "id": "d1f10d36.06672",
+        "type": "function",
+        "z": "ce6271ca.97f74",
+        "name": "PROBABILITY",
+        "func": "msg.payload=msg.payload.predictions[0].values[0][1][1]*100\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 120,
+        "wires": [
+            [
+                "2b46a2be.c0675e",
+                "c8f7c299.56ea2"
+            ]
+        ]
+    },
+    {
+        "id": "e2a9c012.5a705",
+        "type": "ui_group",
+        "name": "Enter Patient Data",
+        "tab": "836d51e.33557b",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "836d51e.33557b",
+        "type": "ui_tab",
+        "name": "Heart Failure Prediction",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
